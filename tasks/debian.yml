@@ -1,0 +1,36 @@
+---
+
+
+# Repositorio do Atom
+
+- name: "Importando a chave do repositorio do Atom"
+  apt_key: 
+    url: "https://packagecloud.io/AtomEditor/atom/gpgkey"
+    state: present
+  become: true
+  tags:
+    - repo
+    - atom
+
+- name: "Adicionando o Repositorio do Atom"
+  apt_repository:
+    repo: "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main"
+    state: present
+    filename: atom
+    update_cache: yes
+  become: true
+  tags:
+    - repo
+    - atom
+
+
+# Instalação do Atom
+
+- name: "Instalando o Atom"
+  apt:
+    name: atom
+    state: present
+    update_cache: yes
+  become: true
+  tags:
+    - atom

@@ -46,7 +46,7 @@
   zypper:
     name: atom
     state: present
-    force: yes
+    update_cache: yes
   become: true
   tags:
     - atom
